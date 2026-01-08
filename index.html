@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NewsFlow - Новостной агрегатор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/>
+                    </svg>
+                    <span class="logo-text">NewsFlow</span>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="searchBtn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                    <button class="avatar-btn">
+                        <img src="https://ui-avatars.com/api/?name=User&background=1A73E8&color=fff&size=40" alt="Avatar">
+                    </button>
+                </div>
+            </div>
+            <!-- Category Chips -->
+            <div class="categories-wrapper">
+                <div class="categories-scroll" id="categoriesScroll">
+                    <button class="chip active" data-category="all">Главное</button>
+                    <button class="chip" data-category="technology">Технологии</button>
+                    <button class="chip" data-category="business">Бизнес</button>
+                    <button class="chip" data-category="science">Наука</button>
+                    <button class="chip" data-category="health">Здоровье</button>
+                    <button class="chip" data-category="sports">Спорт</button>
+                    <button class="chip" data-category="entertainment">Развлечения</button>
+                    <button class="chip" data-category="microbiology">Микробиология</button>
+                    <button class="chip" data-category="aging">Старение</button>
+                    <button class="chip" data-category="crispr">CRISPR</button>
+                    <button class="chip" data-category="biotechnology">Биотехнологии</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Skeleton Loader -->
+            <div class="skeleton-container" id="skeletonLoader">
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-header"></div>
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text-short"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-header"></div>
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text-short"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-header"></div>
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text-short"></div>
+                </div>
+            </div>
+
+            <!-- News Feed -->
+            <div class="news-feed" id="newsFeed"></div>
+
+            <!-- Loading Indicator -->
+            <div class="loading-indicator" id="loadingIndicator">
+                <div class="spinner"></div>
+                <span>Загрузка...</span>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-tab="home">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span>Главная</span>
+            </button>
+            <button class="nav-item" data-tab="discover">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"/>
+                </svg>
+                <span>Интересное</span>
+            </button>
+            <button class="nav-item" data-tab="saved">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <span>Сохранённое</span>
+            </button>
+            <button class="nav-item" data-tab="profile">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span>Профиль</span>
+            </button>
+        </nav>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="search-header">
+                <button class="back-btn" id="closeSearch">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                </button>
+                <input type="text" class="search-input" id="searchInput" placeholder="Поиск новостей...">
+            </div>
+            <div class="search-content">
+                <div class="search-suggestions">
+                    <h3>Популярные запросы</h3>
+                    <div class="suggestion-tags">
+                        <span class="suggestion-tag">Искусственный интеллект</span>
+                        <span class="suggestion-tag">Курсы валют</span>
+                        <span class="suggestion-tag">Технологии</span>
+                        <span class="suggestion-tag">Спорт</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Configuration -->
+    <script>
+        // NewsFlow API Configuration
+        // API Key: pub_232d0eb8b59f48b794d9570cc6188ab4
+        window.CONFIG = {
+            API_KEY: 'pub_232d0eb8b59f48b794d9570cc6188ab4',
+            BASE_URL: 'https://newsdata.io/api/1/news',
+            APP_NAME: 'NewsFlow',
+            LANGUAGE: 'en',  // English only (free plan doesn't support Russian)
+            PAGE_SIZE: 20,
+            DEBUG: true
+        };
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>
