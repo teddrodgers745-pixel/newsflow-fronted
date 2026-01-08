@@ -11,7 +11,7 @@ try {
         CONFIG = window.CONFIG || {
             API_KEY: 'demo',
             BASE_URL: 'https://newsdata.io/api/1/news',
-            BACKEND_URL: 'https://your-backend.onrender.com/api/news',
+            BACKEND_URL: 'https://newsflow-backend-fs2i.onrender.com/api/news',
             API_TYPE: 'newsdata', // 'newsdata' или 'custom'
             APP_NAME: 'NewsFlow',
             LANGUAGE: 'en',
@@ -24,7 +24,7 @@ try {
     CONFIG = {
         API_KEY: 'demo',
         BASE_URL: 'https://newsdata.io/api/1/news',
-        BACKEND_URL: 'https://your-backend.onrender.com/api/news',
+        BACKEND_URL: 'https://newsflow-backend-fs2i.onrender.com/api/news',
         API_TYPE: 'newsdata',
         APP_NAME: 'NewsFlow',
         LANGUAGE: 'en',
@@ -36,7 +36,7 @@ try {
 // Проверка на Demo ключ и тип API
 const isDemoMode = CONFIG.API_KEY === 'demo' || CONFIG.API_KEY === 'YOUR_API_KEY_HERE';
 const isCustomBackend = CONFIG.API_TYPE === 'custom';
-const BACKEND_API = CONFIG.BACKEND_URL || 'https://your-backend.onrender.com/api/news';
+const BACKEND_API = CONFIG.BACKEND_URL || 'https://newsflow-backend-fs2i.onrender.com/api/news';
 
 // =====================================================
 // Статические данные (Fallback)
