@@ -12,7 +12,7 @@ try {
             API_KEY: 'demo',
             BASE_URL: 'https://newsdata.io/api/1/news',
             BACKEND_URL: 'https://newsflow-backend-fs2i.onrender.com/api/news',
-            API_TYPE: 'newsdata', // 'newsdata' или 'custom'
+            API_TYPE: 'custom', // 'newsdata' или 'custom'
             APP_NAME: 'NewsFlow',
             LANGUAGE: 'en',
             PAGE_SIZE: 20,
@@ -25,7 +25,7 @@ try {
         API_KEY: 'demo',
         BASE_URL: 'https://newsdata.io/api/1/news',
         BACKEND_URL: 'https://newsflow-backend-fs2i.onrender.com/api/news',
-        API_TYPE: 'newsdata',
+        API_TYPE: 'custom',
         APP_NAME: 'NewsFlow',
         LANGUAGE: 'en',
         PAGE_SIZE: 20,
